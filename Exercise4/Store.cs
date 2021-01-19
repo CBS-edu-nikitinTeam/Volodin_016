@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using System.Text;
 
 namespace Exercise4
@@ -26,7 +27,24 @@ namespace Exercise4
             }
         }
 
-        public Article GetArticleByProductName(string name)
+        public Article this[string name]
+        {
+            // Через индексатор, вроде и проще и красивее.
+            get
+            {
+                foreach (var article in _articles)
+                {
+                    if (article.ProductName.ToLower()
+                        .Equals(name.ToLower()))
+                    {
+                        return article;
+                    }
+                }
+                return null;
+            }
+        }
+
+        public Article GetArticleByProductName(string name) // А почему не через индексатор?
         {
             Article result = null;
 

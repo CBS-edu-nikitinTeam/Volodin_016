@@ -60,7 +60,9 @@ namespace Exercise4
             string productName = Console.ReadLine();
             Console.Write("\n");
 
-            Article article = store.GetArticleByProductName(productName);
+
+            Article article = store[productName]; 
+                            //store.GetArticleByProductName(productName);
 
             if (article == null)
             {
